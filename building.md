@@ -110,3 +110,9 @@ w3 space create preferredSpaceName
 ```bash
 w3 up --car output.car
 ```
+
+## Ensure CoProcessor has your program
+
+```bash
+curl -X POST "https://cartesi-coprocessor-solver.fly.dev/ensure/$CID/$MACHINE_HASH/$SIZE"
+```
