@@ -1,109 +1,130 @@
-# Installation
+# Installation Guide
+
+This guide walks you through the installation of tools required for setting up your environment everything you need.
 
 ## Prerequisites
 
-- Nonodo: A node responsible for communication with coprocessor and Cartesi.
-- Cartesi Machine: Backend logic engine for the dApp.
+---
 
-## Install Tools
+## Tool Installation
 
-You can install nonodo in multiple ways. Either through an NPM Package or building from source
-
-### 1. Nonodo
-
-- Install brunodo, the experimental version of nonodo through npm using the command:
-
+### 1. (Optional) **Install Nonodo**
+Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
 ```bash
-npm install -g brunodo
+npm install -g nonodo
 ```
 
-### 2. Cartesi Machine
+---
 
-- Download the Cartesi machine for your OS from [this link](https://github.com/edubart/cartesi-machine-everywhere/releases).
+### 2. (Optional - Recommended) **Coprocessor CLI**
 
-**For Linux and macOS:**
-
-- Extract the tar.xz file:
-
+#### Using Cargo
+Ensure Rust and Cargo are installed, then install the CLI tool from crates.io:
 ```bash
-   tar -xf <filename>.tar.xz
+cargo install cartesi-coprocessor
 ```
 
-Replace `\<filename\>` with the actual name of the file you downloaded.
-
-- Navigate to the extracted directory, rename the extracted folder to `cartesi-machine`:
-
+#### From Source
+Clone and build the tool manually:
 ```bash
-cd <cartesi-machine>
+git clone https://github.com/Mugen-Builders/co-processor-cli
+cd co-processor-cli
+cargo install --path .
 ```
 
-- Set up environment variables for the Cartesi Machine. You'll need to add the `bin` directory to your system’s PATH so that you can run the Cartesi Machine binaries from anywhere. For Linux or macOS, you can do this by adding the following line to your `\~/.bashrc`, `\~/.bash_profile`, or `\~/.zshrc` file, depending on your shell:
+> **Note**: Ensure all required dependencies are installed before using this tool.
 
-```bash
-  export PATH=$PATH:/path/to/cartesi-machine/bin
-```
+---
 
-Replace `/path/to/cartesi-machine/` with the actual path to the `bin` folder inside the extracted directory, you can get this by running the command in your terminal while inside the cartesi machine folder: `pwd`. This should print out the path to location of the cartesi-machine folder.
-
-- After adding the line, refresh your terminal configuration by running:
-
-```bash
-   source ~/.bashrc
-```
-
-Or, if you're using zsh:
-
-```bash
-   source ~/.zshrc
-```
-
-- Verify the installation by checking if the Cartesi Machine binary is available. You can do this by running:
-
-```bash
-   cartesi-machine --help
-```
-
-This should display the available options for the Cartesi Machine, indicating that it’s correctly set up.
-
-> [!WARNING]
-> For Mac users, running this command might trigger a prompt from Mac built in security feauture. Check this part of the [troubleshooting section](./troubleshooting#1-cartesi-machine-blocked-by-mac-security-feautures) for more guidelines on how to resolve this.
-
-### 3. Cartesi CLI
-
-You can Install the Cartesi Cli using the command;
-
+### 3. **Cartesi CLI**
+Install the Cartesi CLI globally:
 ```bash
 npm i -g @cartesi/cli
 ```
 
-### 4. Set up web3.storage
+---
 
-Install the web3.storage CLI globally:
+### 4. **Docker Desktop**
+- Download Docker Desktop from [here](https://www.docker.com/products/docker-desktop).
+- Install RISC-V support by running:
+  ```bash
+  docker run --privileged --rm tonistiigi/binfmt --install all
+  ```
 
+---
+
+### 5. **Cartesi Machine**
+
+#### Download and Extract
+1. Download the Cartesi Machine for your OS from [this link](https://github.com/edubart/cartesi-machine-everywhere/releases).
+2. Extract the `.tar.xz` file:
+   ```bash
+   tar -xf <filename>.tar.xz
+   ```
+   Replace `<filename>` with the actual file name.
+
+#### Setup Environment Variables
+1. Rename the extracted folder to `cartesi-machine`:
+   ```bash
+   mv <extracted-folder-name> cartesi-machine
+   ```
+2. Add the `bin` directory to your system’s PATH:
+   - Open your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.) and add:
+     ```bash
+     export PATH=$PATH:/path/to/cartesi-machine/bin
+     ```
+   - Replace `/path/to/cartesi-machine/bin` with the actual path.
+
+3. Refresh your terminal:
+   ```bash
+   source ~/.bashrc   # For bash
+   source ~/.zshrc    # For zsh
+   ```
+
+#### Verify Installation
+Run the following command to verify:
+```bash
+cartesi-machine --help
 ```
-npm install -g @web3-storage/w3cli
-```
 
-### 5. **Install foundry**
+> **Note for Mac Users**: You may encounter a security prompt. Refer to the [troubleshooting section](./troubleshooting#cartesi-machine-blocked-by-mac-security) for resolution.
 
-Download and run the Foundry installer script:
+---
 
-```
+### 6. **Install Foundry**
+Download and run the Foundry installer:
+```bash
 curl -L https://foundry.paradigm.xyz | bash
 ```
-
-After the installation, initialize Foundry:
-
-```
+Initialize Foundry:
+```bash
 foundryup
 ```
 
-### 6. **Build the CARize utility container**
+---
 
-Clone the CARize repository and build the Docker image:
+### 7. **Build the CARize Utility Container**
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nyakiomaina/carize.git
+   ```
+2. Build the Docker image:
+   ```bash
+   cd carize
+   docker build -t carize:latest .
+   ```
+
+---
+
+### 8. **Install Web3 Storage CLI**
+Install the CLI globally:
+```bash
+npm install -g @web3-storage/w3cli
 ```
-git clone https://github.com/nyakiomaina/carize.git
-cd carize
-docker build -t carize:latest .
-```
+
+Refer to the [official documentation](https://web3.storage/docs/w3cli/) for more details.
+
+---
+
+With this setup complete, your environment is ready for development and interaction with the Cartesi's Co-Processor

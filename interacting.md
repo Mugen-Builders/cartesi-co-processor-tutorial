@@ -1,27 +1,127 @@
-# Sending inputs to your dApp
+# Interacting with the Coprocessor
 
-## Interacting via the Cartesi CLI
+Interaction with the Coprocessor is handled through regular smart contract methods. You can use tools like Foundry’s `cast`, wallets, or frontend applications to send transactions.
 
-- Sending transactions such as deposits or generic messages through the layer 1 is done majorly using the Cartes Cli, though you can also use `cast`, the `cartesi cli` or other approaches. You can follow them here in the [docs](https://docs.cartesi.io/cartesi-rollups/1.5/development/send-requests/)
+Below is an example contract, [`CoprocessorAdapterSample`](https://github.com/Mugen-Builders/coprocessor-base-contract/blob/main/test/utils/CoprocessorAdapterSample.sol), which demonstrates interaction with the Coprocessor:
 
-  - To send executions that will be handled by your dApp, you can run the below command to start the process of sending the transaction:
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
-  ```bash
-  Cartesi send
-  ```
+import "../../src/CoprocessorAdapter.sol";
 
-  - Follow the command path to send any transaction type of your choice, below is an example path for sending a generic text to your application.
+contract CoprocessorAdapterSample is CoprocessorAdapter {
+    constructor(address _coprocessorAddress, bytes32 _machineHash)
+        CoprocessorAdapter(_coprocessorAddress, _machineHash)
+    {}
 
-  ```
-  cartesi send
-  ✔ Select send sub-command Send generic input to the application.
-  ✔ Chain Foundry
-  ✔ RPC URL http://127.0.0.1:8545
-  ✔ Wallet Mnemonic
-  ✔ Mnemonic test test test test test test test test test test test junk
-  ✔ Account 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 9999.968655384479878868 ETH
-  ✔ Application address 0xab7528bb862fB57E8A2BCd567a2e929a0Be56a5e
-  ✔ Input String encoding
-  ✔ Input (as string) hello
-  ✔ Input sent: 0xa65e3f82179fac27ac9656f0ae82a4c5d0de5008c6977bbfb5ead18a01a20804
-  ```
+    function handleNotice(bytes memory notice) internal override {
+        address destination;
+        bytes memory decodedPayload;
+
+        (destination, decodedPayload) = abi.decode(notice, (address, bytes));
+
+        bool success;
+        bytes memory returndata;
+
+        (success, returndata) = destination.call(decodedPayload);
+    }
+
+    function runExecution(bytes calldata input) external {
+        callCoprocessor(input);
+    }
+}
+```
+
+---
+
+## Methods of Interaction
+
+### 1. **Using Foundry’s `cast`**
+
+You can interact with the smart contract using Foundry’s CLI tool `cast`:
+
+#### Example: Calling `runExecution`
+1. Ensure you have the contract address, ABI, and RPC URL.
+2. Use the following `cast` command to invoke the `runExecution` function:
+   ```bash
+   cast send <contract_address> "runExecution(bytes)" <hex_encoded_input> \
+       --rpc-url <your_rpc_url> \
+       --private-key <your_private_key>
+   ```
+   Replace:
+   - `<contract_address>` with your deployed contract’s address.
+   - `<hex_encoded_input>` with the ABI-encoded input.
+   - `<your_rpc_url>` with the RPC endpoint of the network.
+   - `<your_private_key>` with the sender’s private key.
+
+---
+
+### 2. **Using a Wallet**
+
+#### Example: Interacting with MetaMask
+1. Connect your wallet to the network where the smart contract is deployed.
+2. Use the contract address and ABI to load the contract into your wallet.
+3. Call the `runExecution` function:
+   - Input the required data as a hex-encoded string in the provided field.
+   - Confirm the transaction and wait for it to be mined.
+
+---
+
+### 3. **From a Frontend Application Using `viem`**
+
+You can use the `viem` library to interact with the contract from a frontend application.
+
+#### Example: Calling `runExecution` with `viem`
+```javascript
+import { createPublicClient, createWalletClient, http, parseAbi } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+
+// Define the RPC URL and private key
+const rpcUrl = "<your_rpc_url>";
+const privateKey = "<your_private_key>";
+const contractAddress = "<contract_address>";
+
+// Define the ABI
+const abi = parseAbi([
+    "function runExecution(bytes input) external"
+]);
+
+// Set up clients
+const publicClient = createPublicClient({ transport: http(rpcUrl) });
+const account = privateKeyToAccount(privateKey);
+const walletClient = createWalletClient({ account, transport: http(rpcUrl) });
+
+// Function to call `runExecution`
+async function callRunExecution(input) {
+    const txHash = await walletClient.writeContract({
+        address: contractAddress,
+        abi,
+        functionName: "runExecution",
+        args: [input],
+    });
+
+    console.log("Transaction Hash:", txHash);
+
+    const receipt = await publicClient.waitForTransactionReceipt({ hash: txHash });
+    console.log("Transaction Confirmed:", receipt);
+}
+
+// Example Input
+const input = "0x" + Buffer.from("your-input-data").toString("hex");
+callRunExecution(input);
+```
+
+Replace:
+- `<your_rpc_url>` with the network’s RPC URL.
+- `<your_private_key>` with the sender’s private key.
+- `<contract_address>` with the deployed contract’s address.
+- `"your-input-data"` with the appropriate input data.
+
+---
+
+## Notes
+
+- **Template Contract**: Reference the full implementation of the `CoprocessorAdapterSample` [here](https://github.com/Mugen-Builders/coprocessor-base-contract/blob/main/test/utils/CoprocessorAdapterSample.sol).
+- **Gas Costs**: Interacting with `runExecution` incurs gas costs depending on the complexity of the operation.
+- **Security**: Ensure proper access controls are implemented for sensitive functions.

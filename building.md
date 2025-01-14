@@ -1,78 +1,106 @@
-# Building and Running locally
+# Building and Running Locally
 
-## Running Nonodo with a Cartesi Machine
+You can set up and run your project either using the Co-Processor CLI or manually. Follow the instructions below based on your preferred approach.
 
-- Start **nonodo** using the command;
+---
 
+## Option 1: Using Co-Processor CLI
+
+### Bootstrap a Project
+1. Create a new Cartesi dApp project:
+   ```bash
+   cartesi-coprocessor create --dapp-name my-cartesi-project --template rust
+   cd my-cartesi-project
+   ```
+
+2. Implement your business logic:
+   - Edit the pre-generated child contract in the `src` folder to customize your logic.
+
+### Register the Program
+Register your program with the Co-Processor:
 ```bash
-nonodo
+cartesi-coprocessor register --email test@gmail.com
 ```
 
-## Running the Machine
+---
 
-- In another terminal, create and build a new Cartesi dApp using the following commands:
+## Option 2: Manual Setup
 
-### 1. **Python**
+### Step 1: Run Nonodo with Cartesi Machine
 
-```bash
-cartesi create my-dapp --template=python --branch "wip/coprocessor"
-cd my-dapp
-cartesi build
-```
+1. **Start Nonodo**:
+   ```bash
+   nonodo
+   ```
 
-- Run the Cartesi Machine Locally on bare metal using the command;
+2. **Create and Build a New Cartesi dApp**:
+   - Use the commands below based on your preferred programming language.
 
-```bash
-cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
---volume=.:/mnt --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 --workdir=/mnt -- python dapp.py
-```
+---
 
-### 2. **Rust**
+#### **Python**
+1. Create a new project:
+   ```bash
+   cartesi create my-dapp --template=python --branch "wip/coprocessor"
+   cd my-dapp
+   cartesi build
+   ```
+2. Run the Cartesi Machine locally:
+   ```bash
+   cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
+   --volume=.:/mnt --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 --workdir=/mnt -- python dapp.py
+   ```
 
-```bash
-cartesi create my-dapp --template=rust --branch "wip/coprocessor"
-cd my-dapp
-cartesi build
-```
+---
 
-- Run the Cartesi Machine Locally on bare metal using the command;
+#### **Rust**
+1. Create a new project:
+   ```bash
+   cartesi create my-dapp --template=rust --branch "wip/coprocessor"
+   cd my-dapp
+   cartesi build
+   ```
+2. Run the Cartesi Machine locally:
+   ```bash
+   cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
+   --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 -- /opt/cartesi/dapp/dapp
+   ```
 
-```bash
-cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 -- /opt/cartesi/dapp/dapp
-```
+---
 
-### 3. **Golang**
+#### **Go**
+1. Create a new project:
+   ```bash
+   cartesi create my-dapp --template=go --branch "wip/coprocessor"
+   cd my-dapp
+   cartesi build
+   ```
+2. Run the Cartesi Machine locally:
+   ```bash
+   cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
+   --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 -- /opt/cartesi/dapp/dapp
+   ```
 
-```bash
-cartesi create my-dapp --template=go --branch "wip/coprocessor"
-cd my-dapp
-cartesi build
-```
+---
 
-- Run the Cartesi Machine Locally on bare metal using the command;
+#### **JavaScript**
+1. Create a new project:
+   ```bash
+   cartesi create my-dapp --template=javascript --branch "wip/coprocessor"
+   cd my-dapp
+   cartesi build
+   ```
+2. Run the Cartesi Machine locally:
+   ```bash
+   cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
+   --volume=.:/mnt --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 --workdir=/opt/cartesi/dapp -- node index
+   ```
 
-```bash
-cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 -- /opt/cartesi/dapp/dapp
-```
+---
 
-### 4. **Javascript**
+### Step 2: Run CARize Utility Container
 
-```bash
-cartesi create my-dapp --template=javasctipt --branch "wip/coprocessor"
-cd my-dapp
-cartesi build
-```
-
-- Run the Cartesi Machine Locally on bare metal using the command;
-
-```bash
-cartesi-machine --network --flash-drive=label:root,filename:.cartesi/image.ext2 \
---volume=.:/mnt --env=ROLLUP_HTTP_SERVER_URL=http://10.0.2.2:5004 --workdir=/opt/cartesi/dapp -- node index
-```
-
-## Run the CARize Utility Container
-
-After building your dApp, run the CARize container to generate necessary files:
+After building your dApp, use the CARize container to generate the necessary files:
 
 ```bash
 docker run --rm \
@@ -81,9 +109,11 @@ docker run --rm \
     carize:latest /carize.sh
 ```
 
-## Set environment variables
+---
 
-Set the variables by reading the values from the output files generated after running the carize.sh script:
+### Step 3: Set Environment Variables
+
+Set the environment variables using the output files generated by `carize.sh`:
 
 ```bash
 CID=$(cat output.cid)
@@ -91,28 +121,30 @@ SIZE=$(cat output.size)
 MACHINE_HASH=$(xxd -p .cartesi/image/hash | tr -d '\n')
 ```
 
-## Uploading CAR Files to Web3.Storage
+---
 
-1. **Log In to web3.storage**
+### Step 4: Upload CAR Files to Web3.Storage
 
-```bash
-w3 login yourEmail@example.com
-```
+1. **Log in to Web3.Storage**:
+   ```bash
+   w3 login yourEmail@example.com
+   ```
 
-2. **Create a storage space**
+2. **Create a Storage Space**:
+   ```bash
+   w3 space create preferredSpaceName
+   ```
 
-```bash
-w3 space create preferredSpaceName
-```
+3. **Upload CAR Files**:
+   ```bash
+   w3 up --car output.car
+   ```
 
-3. **Upload files to Web3.Storage**
+---
 
-```bash
-w3 up --car output.car
-```
+### Step 5: Ensure Co-Processor Has Your Program
 
-## Ensure CoProcessor has your program
-
+Finally, notify the Co-Processor to register your program:
 ```bash
 curl -X POST "https://cartesi-coprocessor-solver.fly.dev/ensure/$CID/$MACHINE_HASH/$SIZE"
 ```
