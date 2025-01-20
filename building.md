@@ -9,18 +9,41 @@ You can set up and run your project either using the Co-Processor CLI or manuall
 ### Bootstrap a Project
 1. Create a new Cartesi dApp project:
    ```bash
-   cartesi-coprocessor create --dapp-name my-cartesi-project --template rust
+   cartesi-coprocessor create --dapp-name <project_name> --template <go, python, javascript, rust>
    cd my-cartesi-project
    ```
 
 2. Implement your business logic:
    - Edit the pre-generated child contract in the `src` folder to customize your logic.
 
+:::info
+Run the Cartesi Coprocessor Devnet Environment
+
+1. Clone the Cartesi Coprocessor repository:
+   ```bash
+   cartesi-coprocessor start-devnet
+   ```
+
+   > To stop and clean up the environment later, use:
+   ```bash
+   cartesi-coprocessor stop-devnet
+   ```
+:::
+
 ### Register the Program
-Register your program with the Co-Processor:
-```bash
-cartesi-coprocessor register --email test@gmail.com
+   Register your program with the Co-Processor:
+   ```bash
+   cartesi-coprocessor register --email <w3 storage account email> --network <devnet, mainnet or testnet>
 ```
+
+3. Check Status:
+
+   ```bash
+   cartesi-coprocessor check-status --network <devnet, mainnet or testnet>
+   ```
+
+   Checks with the coprocessor task issuer for the status of the machine download process
+   > Note: this should be run in the directory for your Cartesi program not the base directory or the solidity contract directory
 
 ---
 
