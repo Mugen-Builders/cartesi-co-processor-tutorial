@@ -7,18 +7,17 @@ All the instructions listed on this page are refering to building using the [Cop
 
 ## Step 1: Bootstrap a Project
 Create a new Cartesi dApp project:
-   ```bash
-   cartesi-coprocessor create --dapp-name <project_name> --template <go, python, javascript, rust>
-   cd my-cartesi-project
-   ```
+```bash
+cartesi-coprocessor create --dapp-name <project_name> --template <go, python, javascript, rust>
+cd my-cartesi-project
+```
 
-Implement your business logic:
-   - Edit the pre-generated child contract in the `src` folder to customize your logic.
+Implement your business logic by editing the pre-generated child contract in the `src` folder to customize your logic.
 
 ## Step 2: Register the Program
 Register your program with the Co-Processor:
 ```bash
-   cartesi-coprocessor register --email <w3 storage account email> --network <devnet, mainnet or testnet>
+cartesi-coprocessor register --email <w3 storage account email> --network <devnet, mainnet or testnet>
 ```
 
 This command not only builds the image or you Cartesi Machine, containing the application logic, but also uploads it to the Web3Storage and registers it to the solver so it can invoke your application logic whenever a smart contract makes a call to it.

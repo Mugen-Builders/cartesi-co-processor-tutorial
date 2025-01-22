@@ -97,7 +97,7 @@ With this setup complete, your environment is ready for development and interact
 ## Optional tools that can help on your journey
 
 ### Nonodo
-[NoNodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi machine. So, the application developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. NoNodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
+[Nonodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi machine. So, the application developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. NoNodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
 
 Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
 ```bash
@@ -115,28 +115,28 @@ The goal is to make it easy for anyone to hack applications using the cartesi ma
 #### Download and Extract
 1. Download the Cartesi Machine for your OS from [this link](https://github.com/edubart/cartesi-machine-everywhere/releases).
 2. Extract the `.tar.xz` file:
-   ```bash
-   tar -xf <filename>.tar.xz
-   ```
-   Replace `<filename>` with the actual file name.
+```bash
+tar -xf <filename>.tar.xz
+```
+Replace `<filename>` with the actual file name.
 
 #### Setup Environment Variables
 1. Rename the extracted folder to `cartesi-machine`:
-   ```bash
-   mv <extracted-folder-name> cartesi-machine
-   ```
+```bash
+mv <extracted-folder-name> cartesi-machine
+```
 2. Add the `bin` directory to your system’s PATH:
-   - Open your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.) and add:
-     ```bash
-     export PATH=$PATH:/path/to/cartesi-machine/bin
-     ```
-   - Replace `/path/to/cartesi-machine/bin` with the actual path.
+- Open your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.) and add:
+```bash
+export PATH=$PATH:/path/to/cartesi-machine/bin
+```
+- Replace `/path/to/cartesi-machine/bin` with the actual path.
 
 3. Refresh your terminal:
-   ```bash
-   source ~/.bashrc   # For bash
-   source ~/.zshrc    # For zsh
-   ```
+```bash
+source ~/.bashrc   # For bash
+source ~/.zshrc    # For zsh
+```
 
 #### Verify Installation
 Run the following command to verify:
