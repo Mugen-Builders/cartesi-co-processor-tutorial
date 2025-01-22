@@ -1,22 +1,11 @@
-# Installation Guide
+# Installation
 
 This guide walks you through the installation of tools required for setting up your environment everything you need.
 
 ## Prerequisites
 
----
-
-## Tool Installation
-
-### 1. (Optional) **Install Nonodo**
-Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
-```bash
-npm install -g nonodo
-```
-
----
-
-### 2. (Optional - Recommended) **Coprocessor CLI**
+### 1. **Coprocessor CLI**
+The Cartesi Co-Processor CLI Tool simplifies bootstrapping, registering, and deploying Cartesi co-processor programs. This tool streamlines the development workflow for Cartesi-based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
 
 #### Using Cargo
 Ensure Rust and Cargo are installed, then install the CLI tool from crates.io:
@@ -32,28 +21,96 @@ cd co-processor-cli
 cargo install --path .
 ```
 
-> **Note**: Ensure all required dependencies are installed before using this tool.
+:::warning 
+Ensure all required dependencies are installed before using this tool.
+:::
 
----
+### 2. **Docker Desktop**
+Docker Desktop is a must-have requirement that comes pre-configured with two necessary plugins for building dApps Cartesi:
+
+- Docker Buildx
+- Docker Compose
+[Install the latest version of Docker Desktop](https://www.docker.com/products/docker-desktop/) for your operating system.
+
+Install RISC-V support by running:
+```bash
+docker run --privileged --rm tonistiigi/binfmt --install all
+```
 
 ### 3. **Cartesi CLI**
+Cartesi CLI is easy-to-use tool for developing and deploying your Cartesi rollups dApps. In this tutorial we use Cartesi CLI as a requiremente for coprocessor CLI as it is in the background resposible for building the image of the Cartesi Machine that will be used by your solution.
+
 Install the Cartesi CLI globally:
 ```bash
 npm i -g @cartesi/cli
 ```
 
+### 4. **Install Foundry**
+Foundry is a portable and modular toolkit for Ethereum application development.
+
+Foundry consists of:
+
+- Forge: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+- Cast: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+- Anvil: Local Ethereum node, akin to Ganache, Hardhat Network.
+- Chisel: Fast, utilitarian, and verbose solidity REPL.
+
+Download and run the Foundry installer:
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+```
+Initialize Foundry:
+```bash
+foundryup
+```
+
+### 5. **Build the CARize Utility Container**
+
+This utility is used to generate the final artifact of your dApp to be uploaded to the Web3Storage.
+
+Clone the repository:
+   ```bash
+   git clone https://github.com/nyakiomaina/carize.git
+   ```
+Build the Docker image:
+   ```bash
+   cd carize
+   docker build -t carize:latest .
+   ```
+
+### 6. **Install Web3 Storage CLI**
+
+Web3 Storage will be responsible for holding the artifact of your application to be executed upon calls of the coprocessor.
+
+Install the CLI globally:
+```bash
+npm install -g @web3-storage/w3cli
+```
+
+Refer to the [official documentation](https://web3.storage/docs/w3cli/) for more details.
+
+:::info
+With this setup complete, your environment is ready for development and interaction with the Cartesi's Co-Processor
+:::
 ---
 
-### 4. **Docker Desktop**
-- Download Docker Desktop from [here](https://www.docker.com/products/docker-desktop).
-- Install RISC-V support by running:
-  ```bash
-  docker run --privileged --rm tonistiigi/binfmt --install all
-  ```
+## Optional tools that can help on your journey
 
----
+### Nonodo
+[NoNodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi machine. So, the application developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. NoNodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
 
-### 5. **Cartesi Machine**
+Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
+```bash
+npm install -g nonodo
+```
+
+### Cartesi Machine Binary
+
+The goal of these binaries is to make it easy to distribute the Cartesi Machine across different platforms and architectures. Just grab and run no matter what host you are running on!
+
+The archives are designed to be dependency free, it will not much installed in your host system. Notably you don't need Lua to run anything, since the cartesi-machine becomes an executable binary.
+
+The goal is to make it easy for anyone to hack applications using the cartesi machine, no matter if you want to use just the cli, its C API, script with Lua, or build other statically linked binaries on top.
 
 #### Download and Extract
 1. Download the Cartesi Machine for your OS from [this link](https://github.com/edubart/cartesi-machine-everywhere/releases).
@@ -87,44 +144,6 @@ Run the following command to verify:
 cartesi-machine --help
 ```
 
-> **Note for Mac Users**: You may encounter a security prompt. Refer to the [troubleshooting section](./troubleshooting#cartesi-machine-blocked-by-mac-security) for resolution.
+:::note 
+For Mac Users**: You may encounter a security prompt. Refer to the [troubleshooting section](./troubleshooting#cartesi-machine-blocked-by-mac-security) for resolution. :::
 
----
-
-### 6. **Install Foundry**
-Download and run the Foundry installer:
-```bash
-curl -L https://foundry.paradigm.xyz | bash
-```
-Initialize Foundry:
-```bash
-foundryup
-```
-
----
-
-### 7. **Build the CARize Utility Container**
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/nyakiomaina/carize.git
-   ```
-2. Build the Docker image:
-   ```bash
-   cd carize
-   docker build -t carize:latest .
-   ```
-
----
-
-### 8. **Install Web3 Storage CLI**
-Install the CLI globally:
-```bash
-npm install -g @web3-storage/w3cli
-```
-
-Refer to the [official documentation](https://web3.storage/docs/w3cli/) for more details.
-
----
-
-With this setup complete, your environment is ready for development and interaction with the Cartesi's Co-Processor

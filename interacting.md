@@ -55,20 +55,7 @@ You can interact with the smart contract using Foundry’s CLI tool `cast`:
    - `<your_rpc_url>` with the RPC endpoint of the network.
    - `<your_private_key>` with the sender’s private key.
 
----
-
-### 2. **Using a Wallet**
-
-#### Example: Interacting with MetaMask
-1. Connect your wallet to the network where the smart contract is deployed.
-2. Use the contract address and ABI to load the contract into your wallet.
-3. Call the `runExecution` function:
-   - Input the required data as a hex-encoded string in the provided field.
-   - Confirm the transaction and wait for it to be mined.
-
----
-
-### 3. **From a Frontend Application Using `viem`**
+### 2. **From a Frontend Application Using `viem`**
 
 You can use the `viem` library to interact with the contract from a frontend application.
 
@@ -122,6 +109,6 @@ Replace:
 
 ## Notes
 
-- **Template Contract**: Reference the full implementation of the `CoprocessorAdapterSample` [here](https://github.com/Mugen-Builders/coprocessor-base-contract/blob/main/test/utils/CoprocessorAdapterSample.sol).
+- **Template Contract**: Reference the full implementation of the [CoprocessorAdapterSample](https://github.com/Mugen-Builders/coprocessor-base-contract/blob/main/test/utils/CoprocessorAdapterSample.sol).
 - **Gas Costs**: Interacting with `runExecution` incurs gas costs depending on the complexity of the operation.
 - **Security**: Ensure proper access controls are implemented for sensitive functions.
