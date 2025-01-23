@@ -1,4 +1,4 @@
-# Interacting with the Coprocessor
+# Interacting with the Cartesi Coprocessor
 
 Interaction with the Coprocessor is handled through regular smart contract methods. You can use tools like Foundry’s `cast`, wallets, or frontend applications to send transactions.
 
@@ -42,6 +42,7 @@ contract CoprocessorAdapterSample is CoprocessorAdapter {
 You can interact with the smart contract using Foundry’s CLI tool `cast`:
 
 #### Example: Calling `runExecution`
+
 1. Ensure you have the contract address, ABI, and RPC URL.
 2. Use the following `cast` command to invoke the `runExecution` function:
    ```bash
@@ -60,6 +61,7 @@ You can interact with the smart contract using Foundry’s CLI tool `cast`:
 You can use the `viem` library to interact with the contract from a frontend application.
 
 #### Example: Calling `runExecution` with `viem`
+
 ```javascript
 import { createPublicClient, createWalletClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -70,9 +72,7 @@ const privateKey = "<your_private_key>";
 const contractAddress = "<contract_address>";
 
 // Define the ABI
-const abi = parseAbi([
-    "function runExecution(bytes input) external"
-]);
+const abi = parseAbi(["function runExecution(bytes input) external"]);
 
 // Set up clients
 const publicClient = createPublicClient({ transport: http(rpcUrl) });
@@ -81,17 +81,19 @@ const walletClient = createWalletClient({ account, transport: http(rpcUrl) });
 
 // Function to call `runExecution`
 async function callRunExecution(input) {
-    const txHash = await walletClient.writeContract({
-        address: contractAddress,
-        abi,
-        functionName: "runExecution",
-        args: [input],
-    });
+  const txHash = await walletClient.writeContract({
+    address: contractAddress,
+    abi,
+    functionName: "runExecution",
+    args: [input],
+  });
 
-    console.log("Transaction Hash:", txHash);
+  console.log("Transaction Hash:", txHash);
 
-    const receipt = await publicClient.waitForTransactionReceipt({ hash: txHash });
-    console.log("Transaction Confirmed:", receipt);
+  const receipt = await publicClient.waitForTransactionReceipt({
+    hash: txHash,
+  });
+  console.log("Transaction Confirmed:", receipt);
 }
 
 // Example Input
@@ -100,6 +102,7 @@ callRunExecution(input);
 ```
 
 Replace:
+
 - `<your_rpc_url>` with the network’s RPC URL.
 - `<your_private_key>` with the sender’s private key.
 - `<contract_address>` with the deployed contract’s address.
