@@ -116,7 +116,7 @@ With this setup complete, your environment is ready for development and interact
 
 ### Nonodo
 
-[Nonodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi Machine. So, the application developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. Nonodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
+[Nonodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi Machine. So, the developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. Nonodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
 
 Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
 

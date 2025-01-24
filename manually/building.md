@@ -1,7 +1,7 @@
 # Building your dApp
 
 :::warning
-All the instructions listed on this page are done manually. For less effort and better developer experience refer to the CLI Section.
+All the instructions listed on this page are done manually. For less effort and better developer experience please refer to the [CLI Section](../building.md#building-your-dapp).
 :::
 
 ## Step 1: Run Nonodo with Cartesi Machine

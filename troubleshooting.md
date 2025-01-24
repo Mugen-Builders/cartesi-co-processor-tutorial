@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This page covers errors that might arise while following the Cartesi Coprocessor integration guide. The goal is to cover errors/ issues ranging from installation to interaction with each issue being to be accompanied by a detailed fix.
+This page covers errors that might arise while following the Cartesi Coprocessor integration guide. The goal is to cover errors/ issues ranging from installation to interaction with each issue being accompanied by a detailed fix.
 
 :::note Actively Updated
 This section of the docs is actively being updated and new errors and fixes will be added as they are discovered, if you run into any error during the installation or interaction steps do inform us via discord.
