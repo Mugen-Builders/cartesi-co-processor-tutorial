@@ -54,6 +54,12 @@ Install the Cartesi CLI globally:
 npm i -g @cartesi/cli
 ```
 
+To test that you have Cartesi CLI installed, you can run the following command:
+
+```bash
+cartesi doctor
+```
+
 ### 4. **Install Foundry**
 
 Foundry is a portable and modular toolkit for Ethereum application development.
