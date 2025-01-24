@@ -31,7 +31,7 @@ This design is ideal for applications requiring heavy data processing with fast 
 
 ### Interacting with the Cartesi Coprocessor
 
-You can interact with the Coprocessor the same way you would with any regular Solidity smart contract. Take a look at [`CounterCaller`](https://github.com/Mugen-Builders/cartesi-coprocessor-template/blob/main/contracts/src/CounterCaller.sol) Contract and its [Coprocessor contract](https://github.com/Mugen-Builders/cartesi-coprocessor-template/blob/main/backend-cartesi-counter/src/index.js) running JS Logic for example.
+You can interact with the Coprocessor the same way you would with any regular Solidity smart contract. Take a look at [`CounterCaller`](https://github.com/Mugen-Builders/cartesi-coprocessor-template/blob/main/contracts/src/CounterCaller.sol) Contract and its [Coprocessor contract](https://github.com/Mugen-Builders/cartesi-coprocessor-template/blob/main/backend-cartesi-counter-js/src/index.js) running JS Logic for example.
 
 ---
 

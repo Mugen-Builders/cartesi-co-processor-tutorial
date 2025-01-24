@@ -128,7 +128,7 @@ npm install -g nonodo
 
 The goal of these binaries is to make it easy to distribute the Cartesi Machine across different platforms and architectures. Just grab and run no matter what host you are running on!
 
-The archives are designed to be dependency free, it will not install much in your host system. Notably you don't need Lua to run anything, since the Cartesi Machine becomes an executable binary.
+The archives are designed to be dependency free, it will not install much in your host system. Notably, you don't need Lua to run anything, since the Cartesi Machine becomes an executable binary.
 
 The goal is to make it easy for anyone to hack applications using the Cartesi Machine, no matter if you want to use just the cli, its C API, script with Lua, or build other statically linked binaries on top.
 

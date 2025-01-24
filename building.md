@@ -1,7 +1,7 @@
 # Building your dApp
 
 :::info
-All the instructions listed on this page are referring to building using the [Cartesi Coprocessor CLI](https://github.com/Mugen-Builders/co-processor-cli). For an approach that does not use the CLI refer to the [manual section](./manually/building.md#building-your-dapp) of this tutorial.
+All the instructions listed on this page are for building using the [Cartesi Coprocessor CLI](https://github.com/Mugen-Builders/co-processor-cli). For an approach that does not use the CLI, please refer to the [manual section](./manually/building.md#building-your-dapp) of this tutorial.
 :::
 
 ---
