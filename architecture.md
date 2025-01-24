@@ -1,6 +1,6 @@
 # Architecture
 
-The Cartesi Coprocessor Architecture is designed to enable processing complex computations in specialized computers off-chain. Through the integration of a new layer called Coprocessors, complex application logics can be run externally by these special computers (coprocessors) while maintaining the state of the application on-chain. This integration is composed of two major components: the on-chain layer and the off-chain layer.
+The Cartesi Coprocessor Architecture is designed to enable processing complex computations in specialized computers off-chain. By introducing a new layer called Coprocessors, complex application logic can be executed externally on these specialized computers, all while preserving the application's state on-chain. This integration is composed of two major components: the on-chain layer and the off-chain layer.
 
 ![cartesi - coprocessor architecture](./img/CoprocessorArch.jpg)
 
@@ -17,7 +17,8 @@ The on-chain components are a set of smart contracts deployed to the base layer,
 
 The off-chain components are a collection of external components consisting of servers and also specialized machines called operators which execute operations on request.
 
-- **Solver:** This is an off-chain component of the Coprocessor integration it's a specialized server which listens to the Coprocessor contract for emitted events. These events contain requests for external computation, where it relays your request to these specialized machines called operators which would execute your request, it's also tasked with making sure that the operators have the developer defined logic with which to execute the request from the on-chain components. After a successful operation, the solver finally signs and sends the result of these operations along with an aggregated signature from the operators on-chain to the Coprocessor contract.
+- **Solver:** 
+The Solver is a specialized server that listens for events emitted by the Coprocessor contract. These events contain requests for external computation. Solver relays these requests to specialized machines called operators, which execute the computations. Additionally, the Solver ensures that the operators follow the developer-defined logic required to process these requests. Once the operation is successfully completed, the Solver signs the results and sends them, along with an aggregated signature from the operators, back on-chain to the Coprocessor contract.
 
 - **Operators:**
   Operators are a network of specialized machines that execute complex operations using predefined user logic. They do not maintain program state but perform tasks when called and return the results to the caller. Operators are incentivized with tokens based on operation complexity. Currently, the Cartesi Coprocessor integration utilizes operators on the EigenLayer.
