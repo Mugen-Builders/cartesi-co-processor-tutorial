@@ -1,6 +1,6 @@
 # Installation
 
-This guide walks you through the installation of tools required for setting up your environment, as at now all these tools are necessary to properly set up your environment, though we're currently streamlining this process to reduce external dependencies.
+This guide outlines the installation of the tools needed to set up your environment. Currently, all these tools are essential for proper setup, though efforts are underway to streamline the process and minimize external dependencies.
 
 ## Prerequisites
 
