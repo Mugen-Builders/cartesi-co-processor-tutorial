@@ -10,7 +10,7 @@ The Cartesi Coprocessor CLI Tool simplifies bootstrapping, registering, and depl
 
 #### Using Cargo
 
-Ensure Rust and Cargo are installed, then install the CLI tool from crates.io:
+Ensure [Rust and Cargo](https://www.rust-lang.org/tools/install) are installed, then install the CLI tool from crates.io:
 
 ```bash
 cargo install cartesi-coprocessor
