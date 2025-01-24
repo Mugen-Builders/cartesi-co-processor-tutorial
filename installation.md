@@ -16,6 +16,12 @@ Ensure Rust and Cargo are installed, then install the CLI tool from crates.io:
 cargo install cartesi-coprocessor
 ```
 
+To test that you have Cartesi Coprocessor CLI installed, you can run the following command:
+
+```bash
+cartesi-coprocessor --version
+```
+
 #### From Source
 
 Clone and build the tool manually:
