@@ -84,18 +84,18 @@ cartesi-coprocessor address-book
 This command prints a list of useful contacts and their addresses.
 
 :::note Retrieving important addresses
-Running this command in the directory containing your Cartesi program and not the base directory or solidity contract directory also displays the **machine hash** of your program if your program has been built previously. It also contains the **task issuer** which is the Coprocessor address your smart contract needs during the contract deployment step.
+Running this command in the directory containing your Cartesi program and not the base directory or solidity contract directory also displays the **machine hash** of your program if your program has been built previously. It also contains the **task issuer**, which is the Coprocessor address your smart contract needs during the contract deployment step.
 :::
 
 ## Step 5: Deploy the Smart Contract
 
-Deploys the solidity contract of your project to any specified network of your choice
+Deploys the solidity contract of your project to any specified network of your choice.
 
 ```bash
 cartesi-coprocessor deploy --contract-name <contract name> --network devnet --constructor-args <arguments seperated by single space>
 ```
 
-For the base examples provided the arguments will be Coprocessor Address and Machine Hash, both of which can be obtained from the address-book command on the previous step.
+For the base examples provided, the arguments will be Coprocessor Address and Machine Hash, both of which can be obtained from the address-book command on the previous step.
 
 ```bash
 cartesi-coprocessor deploy --contract-name MyContract --network devnet --constructor-args <Coprocessor Address> <Machine Hash>

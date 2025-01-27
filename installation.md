@@ -6,7 +6,7 @@ This guide outlines the installation of the tools needed to set up your environm
 
 ### 1. **Coprocessor CLI**
 
-The Cartesi Coprocessor CLI Tool simplifies bootstrapping, registering, and deploying Cartesi coprocessor programs. This tool streamlines the development workflow for Cartesi-based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
+The Cartesi Coprocessor CLI tool simplifies bootstrapping, registering, and deploying Cartesi coprocessor programs. This tool streamlines the development workflow for Cartesi based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
 
 #### Using Cargo
 
@@ -32,7 +32,7 @@ Ensure all required dependencies are installed before using this tool.
 
 ### 2. **Docker Desktop**
 
-Docker Desktop is a must-have requirement that comes pre-configured with two necessary plugins for building dApps Cartesi:
+Docker Desktop is a must-have requirement that comes pre-configured with two necessary plugins for building Cartesi dApps:
 
 - Docker Buildx
 - Docker Compose
@@ -79,7 +79,7 @@ foundryup
 
 ### 5. **Build the CARize Utility Container**
 
-This utility is used to generate the final artifact of your dApp to be uploaded to the Web3Storage.
+This utility is used to generate the final artifact of your dApp to be uploaded to the Web3 Storage.
 
 Clone the repository:
 
@@ -107,7 +107,7 @@ npm install -g @web3-storage/w3cli
 Refer to the [official documentation](https://web3.storage/docs/w3cli/) for more details.
 
 :::info
-With this setup complete, your environment is ready for development and interaction with the Cartesi Coprocessor
+With this setup complete, your environment is ready for development and interaction with the Cartesi Coprocessor.
 :::
 
 ---
@@ -116,7 +116,7 @@ With this setup complete, your environment is ready for development and interact
 
 ### Nonodo
 
-[Nonodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi Machine. So, the developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. Nonodo is a valuable development workflow help, but there are some caveats the developer must be aware of.
+[Nonodo](https://github.com/Calindra/nonodo) is a development node for Cartesi Rollups that was designed to work with applications running in the host machine instead of the Cartesi Machine. So, the developer doesn't need to be concerned with compiling their application to RISC-V. The application back-end should run in the developer's machine and call the Rollup HTTP API to process advance and inspect inputs. Nonodo is a valuable development workflow tool, but there are some caveats the developer must be aware of.
 
 Install Nonodo, a local testing tool emulating Cartesi's Node, using npm:
 

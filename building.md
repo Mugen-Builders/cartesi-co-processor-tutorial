@@ -25,7 +25,7 @@ Register your program with the Coprocessor:
 cartesi-coprocessor register --email <w3 storage account email> --network <devnet, mainnet or testnet>
 ```
 
-This command not only builds the image or you Cartesi Machine, containing the application logic, but also uploads it to the Web3Storage and registers it to the solver, so it can invoke your application logic whenever a smart contract makes a call to it.
+This command not only builds the image of your Cartesi Machine, containing the application logic, but also uploads it to the Web3Storage and registers it to the solver, so it can invoke your application logic whenever a smart contract makes a call to it.
 
 Check Status:
 
@@ -33,7 +33,7 @@ Check Status:
 cartesi-coprocessor check-status --network <devnet, mainnet or testnet>
 ```
 
-Checks with the coprocessor task issuer for the status of the machine download process
+Checks with the Coprocessor task issuer for the status of the machine download process.
 :::note  
 This should be run in the directory for your Cartesi program.
 Not the base directory or the solidity contract directory.
