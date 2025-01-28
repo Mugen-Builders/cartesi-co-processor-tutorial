@@ -6,7 +6,7 @@ This guide outlines the installation of the tools needed to set up your environm
 
 ### 1. **Coprocessor CLI**
 
-The Cartesi Coprocessor CLI tool simplifies bootstrapping, registering, and deploying Cartesi coprocessor programs. This tool streamlines the development workflow for Cartesi based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
+The Cartesi Coprocessor CLI tool simplifies bootstrapping, registering, and deploying Cartesi Coprocessor programs. This tool streamlines the development workflow for Cartesi based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
 
 #### Using Cargo
 
@@ -130,7 +130,7 @@ The goal of these binaries is to make it easy to distribute the Cartesi Machine 
 
 The archives are designed to be dependency-free, thereby minimizing installations on your host system. Notably, you don't need Lua to run anything, since the Cartesi Machine becomes an executable binary.
 
-The goal is to make it easy for anyone to hack applications using the Cartesi Machine, no matter if you want to use just the cli, its C API, script with Lua, or build other statically linked binaries on top.
+The goal is to make it easy for anyone to hack applications using the Cartesi Machine, no matter if you want to use just the CLI, its C API, script with Lua, or build other statically linked binaries on top.
 
 #### Download and Extract
 

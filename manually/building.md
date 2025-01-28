@@ -1,7 +1,7 @@
 # Building your dApp
 
 :::warning
-All the instructions listed on this page are done manually. For less effort and better developer experience please refer to the [CLI Section](../building.md#building-your-dapp).
+All the instructions listed on this page are done manually. For less effort and better developer experience, please refer to the [CLI Section](../building.md#building-your-dapp).
 :::
 
 ## Step 1: Run Nonodo with Cartesi Machine
@@ -12,7 +12,7 @@ All the instructions listed on this page are done manually. For less effort and 
    nonodo
    ```
 
-2. **Create and Build a New Cartesi dApp**:
+2. **Create and Build a new Cartesi dApp**:
    - Use the commands below based on your preferred programming language.
 
 ---
