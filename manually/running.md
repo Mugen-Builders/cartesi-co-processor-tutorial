@@ -7,7 +7,7 @@ Follow this guide to set up Foundry, run the Cartesi Coprocessor devnet, and int
 forge --version
 ```
 
-If Foundry is not installed, refer to the [installation guide](../installation.md#install-foundry) and set it up before proceeding.
+If you don't have Foundry installed, please refer to the [installation guide](../installation.md#install-foundry) and set it up before proceeding.
 :::
 
 # Manually running

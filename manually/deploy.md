@@ -8,7 +8,7 @@ This guide uses Foundry to deploy your dApp to a testnet or mainnet.
 forge --version
 ```
 
-If Foundry is not installed, refer to the installation guide and set it up before proceeding.
+If you don't have Foundry installed, please refer to the [installation guide](../installation.md) and set it up before proceeding.
 :::
 
 ## Step 1: Build your dApp

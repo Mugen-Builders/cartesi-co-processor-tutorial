@@ -8,7 +8,7 @@ This guide uses Foundry to deploy your dApp to testnet or mainnet.
 forge --version
 ```
 
-If Foundry is not installed, refer to the installation guide and set it up before proceeding.
+If you don't have Foundry installed, please refer to the [installation guide](installation.md) and set it up before proceeding.
 :::
 
 ## Step 1: Register the Program
@@ -25,7 +25,7 @@ Check Status:
 cartesi-coprocessor check-status --network <testnet, mainnet>
 ```
 
-Checks with the Coprocessor task issuer for the status of the machine download process
+Checks with the Coprocessor task issuer for the status of the machine download process.
 :::note  
 This should be run in the directory for your Cartesi program.
 Not the base directory or the solidity contract directory.
