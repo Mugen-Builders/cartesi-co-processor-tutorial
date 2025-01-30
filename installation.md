@@ -77,26 +77,17 @@ Initialize Foundry:
 foundryup
 ```
 
-### 5. **Build the CARize Utility Container**
+:::info
+With this setup complete, your environment is ready for development and interaction with the Cartesi Coprocessor.
+:::
 
-This utility is used to generate the final artifact of your dApp to be uploaded to the Web3 Storage.
+---
 
-Clone the repository:
+## Optional tools that can help on your journey
 
-```bash
-git clone https://github.com/nyakiomaina/carize.git
-```
+### Web3 Storage CLI
 
-Build the Docker image:
-
-```bash
-cd carize
-docker build -t carize:latest .
-```
-
-### 6. **Install Web3 Storage CLI**
-
-Web3 Storage will be responsible for holding the artifact of your application to be executed upon calls of the Coprocessor.
+For mainnet deployment, Web3 Storage stores your application's artifact, which is executed when the Coprocessor is called. However, for testnet or devnet, you don’t need to concern yourself with Web3 Storage, as your application artifact is uploaded directly to the Coprocessor solver.
 
 Install the CLI globally:
 
@@ -105,14 +96,6 @@ npm install -g @web3-storage/w3cli
 ```
 
 Refer to the [official documentation](https://web3.storage/docs/w3cli/) for more details.
-
-:::info
-With this setup complete, your environment is ready for development and interaction with the Cartesi Coprocessor.
-:::
-
----
-
-## Optional tools that can help on your journey
 
 ### Nonodo
 

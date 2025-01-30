@@ -1,7 +1,7 @@
 # Building your dApp
 
 :::warning
-All the instructions listed on this page are done manually. For less effort and better developer experience, please refer to the [CLI Section](../building.md#building-your-dapp).
+All the instructions listed on this page are done manually and focused at deploying to a testnet. For less effort and better developer experience, please refer to the [CLI Section](../building.md#building-your-dapp).
 :::
 
 ## Step 1: Run Nonodo with Cartesi Machine
@@ -87,7 +87,7 @@ After building your dApp, use the CARize container to generate the necessary fil
 docker run --rm \
     -v $(pwd)/.cartesi/image:/data \
     -v $(pwd):/output \
-    carize:latest /carize.sh
+    ghcr.io/zippiehq/cartesi-carize:latest /carize.sh
 ```
 
 ## Step 3: Set Environment Variables
@@ -100,25 +100,41 @@ SIZE=$(cat output.size)
 MACHINE_HASH=$(xxd -p .cartesi/image/hash | tr -d '\n')
 ```
 
-## Step 4: Upload CAR Files to Web3.Storage
+## Step 4: Upload CAR Files to Coprocessor solver
 
-Log in to Web3.Storage
-
-```bash
-w3 login yourEmail@example.com
-```
-
-Create a Storage Space
+- Request for a pre-signed URL
 
 ```bash
-w3 space create preferredSpaceName
+curl -X POST "<SOLVER_URL>/upload" -d ""
 ```
 
-Upload CAR Files
+Running this command returns an object containing a pre-signed URL to which the car file is uploaded and an upload ID for identifying the upload.
+
+- Upload Carfile to the pre-signed URL
 
 ```bash
-w3 up --car output.car
+curl -X PUT "<PRESIGNED_URL>" \
+     -H "Content-Type: application/octet-stream" \
+     --data-binary "@output.car"
 ```
+
+Note, that this upload process takes a while to upload, depending on your network speed and also the size of the Carfile.
+
+- Publish upload ID
+
+```bash
+curl -X POST "<SOLVER_URL>/publish/<UPLOAD_ID>" -d ""
+```
+
+This command returns an operator ID and the current state of your program download process. Note that it is to be called only once and any subsequent call will be blocked, resulting in an error message.
+
+- Check publish status
+
+```bash
+curl -X GET "<SOLVER_URL>/publish_status/<UPLOAD_ID>" -d ""
+```
+
+This returns the status of the download process for your program and can be called as many tines as necessary. To proceed with other steps you need to receive a response containing the machine state: "dag_importing_complete", any other response either symbolizes, that there has been an error or that the download process is still ongoing.
 
 ## Step 5: Ensure Coprocessor Has Your Program
 

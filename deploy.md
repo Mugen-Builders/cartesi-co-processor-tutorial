@@ -11,18 +11,18 @@ forge --version
 If you don't have Foundry installed, please refer to the [installation guide](installation.md) and set it up before proceeding.
 :::
 
-## Step 1: Register the Program
+## Step 1: Publish the Program
 
-Register your program with the Coprocessor:
+Publish your program to the Coprocessor:
 
 ```bash
-cartesi-coprocessor register --email <w3 storage account email> --network <testnet, mainnet>
+cartesi-coprocessor publish --network <testnet, mainnet>
 ```
 
 Check Status:
 
 ```bash
-cartesi-coprocessor check-status --network <testnet, mainnet>
+cartesi-coprocessor publish-status --network <testnet, mainnet>
 ```
 
 Checks with the Coprocessor task issuer for the status of the machine download process.
