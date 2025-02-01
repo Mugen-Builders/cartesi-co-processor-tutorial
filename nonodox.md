@@ -64,7 +64,7 @@ anvil --load-state anvil_state.json
 
 :::tip
 
-Before running the command below, please make sure that you have [deployed](./cartesi-co-processor-tutorial/running#step-5-deploy-the-smart-contract) the CoprocesorAdapter instance, passing `0x68B1D87F95878fE05B998F19b66F4baba5De1aed` as the coprocessor address to its constructor
+Before running the command below, please make sure that you have [deployed](./cartesi-co-processor-tutorial/running#step-5-deploy-the-smart-contract) the CoprocesorAdapter instance, passing `0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE` as the coprocessor address to its constructor
 :::
 
 #### 3. Running the tool:
