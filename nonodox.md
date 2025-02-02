@@ -10,32 +10,24 @@ label: "NoNodox: An iterative development environment for Cartesi Coprocessor ap
 
 This is an iterative tool designed to accelerate the "debugging" and "development" process of Cartesi Coprocessor applications locally, providing a faster path to the production environment.
 
-## Getting Started
-
 ### Prerequisites
 
 Please make sure that your system meets all the requirements listed below before proceeding with this tutorial.
 
 1. [Foundry](https://book.getfoundry.sh/getting-started/installation)
-2. [Golang](https://go.dev/doc/install)
 3. [Nonodo](https://github.com/Calindra/nonodo?tab=readme-ov-file#installation)
 
-### Running
+### Installation
 
-:::info
-Before running the command below, ensure you have created a `.toml` file and set the **environment variables** correctly. Below is the structure of the content that should be included in the file:
+There are two installation options for the tool: one involves installing the binary according to the architectures available on the releases page, and the other uses Golang to install the package. Choose one of these options to proceed.
 
-```toml
-[anvil]
-http_url = "http://127.0.0.1:8545"
-ws_url = "ws://127.0.0.1:8545"
-private_key = "<private-key-without-0x 
-input_box_block = "7"
-```
-:::
+- **Option 1:** Install the binary:
 
-#### 1. Install the package:
-Install the nonodox binary and ensure that it is available in the system's $PATH.
+1. Go to latest [release page](https://github.com/Mugen-Builders/cartesi-coprocessor-nonodox/releases) and download the archive for your host platform;
+2. Extract the archive;
+3. Add the binary's path to the system PATH so that it can be initialized using just the `nonodox` command;
+
+- **Option 2:** Install the package with golang:
 
 ```sh
 go install github.com/Mugen-Builders/cartesi-coprocessor-nonodox/cmd/nonodox@latest
@@ -46,34 +38,42 @@ The command above installs NoNodoX into the `bin` directory inside the directory
 If you don't set the `GOPATH` variable, the default install location is `$HOME/go/bin`.
 So, to call the `nonodox` command directly, you should add it to the `PATH` variable.
 The command below exemplifies that.
-
+ 
 ```sh
 export PATH="$HOME/go/bin:$PATH"
 ```
 :::
 
-#### 2. Download the state file (.json) and start the anvil instance:
+### Running
 
-Download the instance state that should be started in Anvil with all the required contracts already deployed, in order to interact with your 
-CoprocessorAdapter instance that will be deployed later, and start Anvil.
+1. Download the state file (.json) and start the anvil instance:
 
 ```sh
 curl -O https://raw.githubusercontent.com/Mugen-Builders/cartesi-coprocessor-nonodox/refs/heads/main/anvil_state.json
 anvil --load-state anvil_state.json
 ```
 
-:::tip
-
-Before running the command below, please make sure that you have [deployed](./cartesi-co-processor-tutorial/running#step-5-deploy-the-smart-contract) the CoprocesorAdapter instance, passing `0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE` as the coprocessor address to its constructor
+:::danger
+Before running the command below, please make sure that you have deployed the CoprocesorAdapter instance, passing `0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE` as the coprocessor address to its constructor
 :::
 
-#### 3. Running the tool:
-
-Running the tool, notice that you must have created a `.toml` file and passed it as an argument with the `--config` flag. If you haven't created the file yet, make sure it has the same structure as I shared earlier.
+2. Running the tool:
 
 ```sh
-nonodox --config <filename>.toml
+nonodox
 ```
+
+:::info
+If you wish to make any customizations to the tool's execution environment, you can use the `--config` flag along with the path to a `.toml` file, which should contain the following variables:
+
+```toml
+[anvil]
+http_url = "http://127.0.0.1:8545"
+ws_url = "ws://127.0.0.1:8545"
+private_key = "<private-key-without-0x>" 
+input_box_block = "7"
+```
+:::
 
 Now you can run your application, send inputs, and iteratively observe the outputs (Notices) of your application as they are executed and reach your CoprocesorAdapter instance.
 
