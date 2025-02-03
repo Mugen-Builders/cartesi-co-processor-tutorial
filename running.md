@@ -52,7 +52,7 @@ git clone https://github.com/Mugen-Builders/coprocessor-base-contract
 Install the base contract in your project:
 
 ```bash
-forge install https://github.com/Mugen-Builders/coprocessor-base-contract
+forge install https://github.com/Mugen-Builders/coprocessor-base-contract--no-commit
 ```
 
 ## Step3: Import and Inherit the Base Contract
