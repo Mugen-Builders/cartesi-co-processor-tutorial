@@ -16,6 +16,12 @@ Ensure [Rust and Cargo](https://www.rust-lang.org/tools/install) are installed, 
 cargo install cartesi-coprocessor
 ```
 
+To test that you have Cartesi Coprocessor CLI installed, you can run the following command:
+
+```bash
+cartesi-coprocessor --version
+```
+
 #### From Source
 
 Clone and build the tool manually:
