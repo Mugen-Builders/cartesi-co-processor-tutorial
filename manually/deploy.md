@@ -83,6 +83,7 @@ Finally, notify the Coprocessor to register your program:
 ```bash
 curl -X POST "https://cartesi-coprocessor-solver.fly.dev/ensure/$CID/$MACHINE_HASH/$SIZE"
 ```
+and proceed after receiving the response `"operator_ids_with_states":{"<ID>":"ready"}}%`
 
 ## Step 6: Deploy the Smart Contract
 
