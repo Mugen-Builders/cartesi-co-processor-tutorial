@@ -32,6 +32,68 @@ cd co-processor-cli
 cargo install --path .
 ```
 
+#### Installing via Binary Download:
+
+- Step 1: Download the Binary File:
+
+  Visit [the release page](https://github.com/Mugen-Builders/co-processor-cli/releases) of the CLI to download the latest binary file for Your OS.
+
+- Step 2: Extract the Tarball
+
+  Open your terminal, navigate to the directory where the downloaded binary is located, and then extract the file by running the command:
+
+  ```bash
+  tar -xzf cartesi-coprocessor-aarch64-apple-darwin.tar.gz
+  ```
+
+- Step 3: Move the Binary to a System Path (Optional but Recommended)
+
+  To make the CLI tool accessible from anywhere, move the binary to a directory in your system’s PATH, such as /usr/local/bin:
+
+  ```bash
+  sudo mv cartesi-coprocessor /usr/local/bin/
+  ```
+
+- Step 4: Make the Binary Executable
+
+  Ensure the binary has executable permissions, by running this command:
+
+  ```bash
+  sudo chmod +x /usr/local/bin/cartesi-coprocessor
+  ```
+
+- Step 5: Add the Binary to .zshrc or .bashrc PATH
+
+  - Open the .zshrc file in a text editor (e.g., nano or vim):
+
+    ```bash
+    nano ~/.zshrc       # or nano ~/.bashrc
+    ```
+
+  - Add the following line to the end of the file to include the /usr/local/bin directory in your PATH:
+
+    ```bash
+    export PATH="/usr/local/bin:$PATH"
+    ```
+
+  - Save the file and exit the editor:
+
+    In nano: Press Ctrl + X, then Y, and Enter to save and exit, while in vim: Press Esc, then type :wq and press Enter.
+
+  - Apply the changes to your current terminal session:
+
+    ```bash
+    source ~/.zshrc      # or source ~/.bashrc
+    ```
+
+- Step 6: Verify Installation
+
+  Test if the tool is installed correctly by running:
+
+  ```bash
+  cartesi-coprocessor --version
+  ```
+
 :::warning
 Ensure all required dependencies are installed before using this tool.
 :::
@@ -94,68 +156,6 @@ With this setup complete, your environment is ready for development and interact
 :::
 
 ---
-
-## Installing the CLI via Binary Download:
-
-- **Step 1: Download the Binary File:**
-
-  Visit [the release page](https://github.com/Mugen-Builders/co-processor-cli/releases) to download the latest binary file for Your OS.
-
-- **Step 2: Extract the Tarball**
-
-  Open your terminal and navigate to the directory where the downloaded binary is located, and then extract the file by running the command:
-
-  ```bash
-  tar -xzf cartesi-coprocessor-aarch64-apple-darwin.tar.gz
-  ```
-
-- **Step 3: Move the Binary to a System Path (Optional but Recommended)**
-
-  To make the CLI tool accessible from anywhere, move the binary to a directory in your system’s PATH, such as /usr/local/bin:
-
-  ```bash
-  sudo mv cartesi-coprocessor /usr/local/bin/
-  ```
-
-- **Step 4: Make the Binary Executable**
-
-  Ensure the binary has executable permissions, by running this command:
-
-  ```bash
-  sudo chmod +x /usr/local/bin/cartesi-coprocessor
-  ```
-
-- **Step 5: Add the Binary to .zshrc or .bashrc PATH**
-
-  - Open the .zshrc file in a text editor (e.g., nano or vim):
-
-    ```bash
-    nano ~/.zshrc       # or nano ~/.bashrc
-    ```
-
-  - Add the following line to the end of the file to include the /usr/local/bin directory in your PATH:
-
-    ```bash
-    export PATH="/usr/local/bin:$PATH"
-    ```
-
-  - Save the file and exit the editor:
-
-    In nano: Press Ctrl + X, then Y, and Enter to save and exit, while in vim: Press Esc, then type :wq and press Enter.
-
-  - Apply the changes to your current terminal session:
-
-    ```bash
-    source ~/.zshrc      # or source ~/.bashrc
-    ```
-
-- **Step 6: Verify Installation**
-
-  Test if the tool is installed correctly by running:
-
-  ```bash
-  cartesi-coprocessor --version
-  ```
 
 ---
 
