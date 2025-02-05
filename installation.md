@@ -10,10 +10,16 @@ The Cartesi Coprocessor CLI tool simplifies bootstrapping, registering, and depl
 
 #### Using Cargo
 
-Ensure Rust and Cargo are installed, then install the CLI tool from crates.io:
+Ensure [Rust and Cargo](https://www.rust-lang.org/tools/install) are installed, then install the CLI tool from crates.io:
 
 ```bash
 cargo install cartesi-coprocessor
+```
+
+To test that you have Cartesi Coprocessor CLI installed, you can run the following command:
+
+```bash
+cartesi-coprocessor --version
 ```
 
 #### From Source
@@ -52,6 +58,12 @@ Install the Cartesi CLI globally:
 
 ```bash
 npm i -g @cartesi/cli
+```
+
+To test that you have Cartesi CLI installed, you can run the following command:
+
+```bash
+cartesi doctor
 ```
 
 ### 4. **Install Foundry**
