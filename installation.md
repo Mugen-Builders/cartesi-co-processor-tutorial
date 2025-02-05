@@ -8,30 +8,6 @@ This guide outlines the installation of the tools needed to set up your environm
 
 The Cartesi Coprocessor CLI tool simplifies bootstrapping, registering, and deploying Cartesi Coprocessor programs. This tool streamlines the development workflow for Cartesi based applications, allowing developers to focus on building their logic instead of wrestling with setup and deployment processes.
 
-#### Using Cargo
-
-Ensure [Rust and Cargo](https://www.rust-lang.org/tools/install) are installed, then install the CLI tool from crates.io:
-
-```bash
-cargo install cartesi-coprocessor
-```
-
-To test that you have Cartesi Coprocessor CLI installed, you can run the following command:
-
-```bash
-cartesi-coprocessor --version
-```
-
-#### From Source
-
-Clone and build the tool manually:
-
-```bash
-git clone https://github.com/Mugen-Builders/co-processor-cli
-cd co-processor-cli
-cargo install --path .
-```
-
 #### Installing via Binary Download:
 
 - Step 1: Download the Binary File:
@@ -93,6 +69,30 @@ cargo install --path .
   ```bash
   cartesi-coprocessor --version
   ```
+
+#### Using Cargo
+
+Ensure [Rust and Cargo](https://www.rust-lang.org/tools/install) are installed, then install the CLI tool from crates.io:
+
+```bash
+cargo install cartesi-coprocessor
+```
+
+To test that you have Cartesi Coprocessor CLI installed, you can run the following command:
+
+```bash
+cartesi-coprocessor --version
+```
+
+#### From Source
+
+Clone and build the tool manually:
+
+```bash
+git clone https://github.com/Mugen-Builders/co-processor-cli
+cd co-processor-cli
+cargo install --path .
+```
 
 :::warning
 Ensure all required dependencies are installed before using this tool.
