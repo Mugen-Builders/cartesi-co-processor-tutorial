@@ -133,21 +133,21 @@ With this setup complete, your environment is ready for development and interact
     nano ~/.zshrc       # or nano ~/.bashrc
     ```
 
-  - Add the following line to the end of the file to include the ~/bin directory in your PATH:
+  - Add the following line to the end of the file to include the /usr/local/bin directory in your PATH:
 
-  ```bash
-     export PATH="/usr/local/bin:$PATH"
-  ```
+    ```bash
+    export PATH="/usr/local/bin:$PATH"
+    ```
 
   - Save the file and exit the editor:
 
-    In nano: Press Ctrl + X, then Y, and Enter to save and exit while in vim: Press Esc, then type :wq and press Enter.
+    In nano: Press Ctrl + X, then Y, and Enter to save and exit, while in vim: Press Esc, then type :wq and press Enter.
 
   - Apply the changes to your current terminal session:
 
-  ```bash
-      source ~/.zshrc      # or source ~/.bashrc
-  ```
+    ```bash
+    source ~/.zshrc      # or source ~/.bashrc
+    ```
 
 - **Step 6: Verify Installation**
 
