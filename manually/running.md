@@ -14,7 +14,7 @@ If you don't have Foundry installed, please refer to the [installation guide](..
 
 ## Step 1: Start your devnet
 
-Run the Cartesi Coprocessor Devnet Environment
+Run the Cartesi Coprocessor Devnet Environment.
 
 Clone the Cartesi Coprocessor repository:
 
@@ -140,13 +140,13 @@ forge create --broadcast \
       --rpc-url <your_rpc_url> \
       --private-key <your_private_key> \
       ./src/CoprocessorAdapterSample.sol:CoprocessorAdapterSample \
-      --constructor-args <coprocessor_address> <machine_hash>
+      --constructor-args <task_issuer_address> <machine_hash>
 ```
 
 :::info Example Values for Local Development:
 
 - **RPC URL**: `http://127.0.0.1:8545`
-- **Coprocessor Address**: Obtain this value from the `task_issuer` in `config-devnet.toml`.
+- **Task Issuer Address**: Obtain this value from the `task_issuer` in `config-devnet.toml`.
 - **Machine Hash**: Obtain this from the Cartesi backend deployment output. You can get it from the environment variables set in step 1.
   :::
 

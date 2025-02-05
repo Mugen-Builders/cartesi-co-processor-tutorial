@@ -63,8 +63,8 @@ Add the base contract to your project:
 import "cartesi-coprocessor-base-contract/BaseContract.sol";
 
 contract MyContract is CoprocessorAdapter {
-    constructor(address _coprocessorAddress, bytes32 _machineHash)
-        CoprocessorAdapter(_coprocessorAddress, _machineHash)
+    constructor(address _taskIssuerAddress, bytes32 _machineHash)
+        CoprocessorAdapter(_taskIssuerAddress, _machineHash)
     {}
 
     // Add your business logic here
