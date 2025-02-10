@@ -141,6 +141,7 @@ This returns the status of the download process for your program and can be call
 Finally, notify the Coprocessor to register your program:
 
 ```bash
-curl -X POST "https://cartesi-coprocessor-solver.fly.dev/ensure/$CID/$MACHINE_HASH/$SIZE"
+curl -X POST "https://cartesi-coprocessor-solver-prod.fly.dev/ensure/$CID/$MACHINE_HASH/$SIZE"
 ```
+
 and proceed after receiving the response `"operator_ids_with_states":{"<ID>":"ready"}}%`
