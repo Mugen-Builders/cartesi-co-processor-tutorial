@@ -4,7 +4,7 @@ slug: '/nonodox'
 label: "NoNodox: An iterative development environment for Cartesi Coprocessor applications"
 ---
 
-# NoNodox: Development tool
+# NoNodox (development tool)
 
 ## Overview
 
