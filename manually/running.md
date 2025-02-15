@@ -96,7 +96,7 @@ forge install https://github.com/Mugen-Builders/coprocessor-base-contract --no-c
 Add the base contract to your project:
 
 ```solidity
-import "cartesi-coprocessor-base-contract/BaseContract.sol";
+import "../lib/coprocessor-base-contract/src/CoprocessorAdapter.sol";
 
 contract MyContract is CoprocessorAdapter {
     constructor(address _coprocessorAddress, bytes32 _machineHash)
