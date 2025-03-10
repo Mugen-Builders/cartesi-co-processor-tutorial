@@ -60,7 +60,7 @@ forge install https://github.com/Mugen-Builders/coprocessor-base-contract --no-c
 Add the base contract to your project:
 
 ```solidity
-import "cartesi-coprocessor-base-contract/BaseContract.sol";
+import "cartesi-coprocessor-base-contract/CoprocessorAdapter.sol";
 
 contract MyContract is CoprocessorAdapter {
     constructor(address _taskIssuerAddress, bytes32 _machineHash)
@@ -72,7 +72,7 @@ contract MyContract is CoprocessorAdapter {
 ```
 
 :::tip Responses from the coprocessor
-The `handleNotice` function in the `CoprocessorAdapterSample.sol` smart contract is triggered by notices sent from the Python application. It is invoked directly when the Coprocessor interacts with the smart contract.
+The `handleNotice` function in the `CoprocessorAdapterSample.sol` smart contract is triggered by notices sent from the Python/JS/Go/Rust application. It is invoked directly when the Coprocessor interacts with the smart contract.
 :::
 
 ## Step 4: Get the important addresses
