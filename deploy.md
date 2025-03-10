@@ -19,13 +19,6 @@ Publish your program to the Coprocessor:
 cartesi-coprocessor publish --network <testnet, mainnet>
 ```
 
-Check Status:
-
-```bash
-cartesi-coprocessor publish-status --network <testnet, mainnet>
-```
-
-Checks with the Coprocessor task issuer for the status of the machine download process.
 :::note  
 This should be run in the directory for your Cartesi program.
 Not the base directory or the solidity contract directory.
